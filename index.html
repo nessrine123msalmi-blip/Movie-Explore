@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#f2f4f3">
+	<meta name="description" content="Find your next favorite film with Movie Explorer.">
+	<title>Movie Explorer | Find your next favorite</title>
+	<link rel="stylesheet" href="css/styles.css">
+	<script src="js/data.js" defer></script>
+	<script src="js/app.js" defer></script>
+</head>
+<body>
+	<header class="site-header">
+		<a class="wordmark" href="#home" aria-label="Movie Explorer home">
+			<span class="wordmark-icon" aria-hidden="true">M</span>
+			<span>movie<span class="wordmark-light">explorer</span></span>
+		</a>
+		<nav class="header-actions" aria-label="Display settings">
+			<button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme">
+				<svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.4A8.5 8.5 0 0 1 8.6 3.8 8.6 8.6 0 1 0 20.2 15.4Z"/></svg>
+				<svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+			</button>
+		</nav>
+	</header>
+
+	<main id="home">
+		<section class="intro" aria-labelledby="page-title">
+			<div class="intro-copy">
+				<p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true"></span> YOUR PERSONAL FILM SHELF</p>
+				<h1 id="page-title">Find your next <span>favorite.</span></h1>
+				<p class="intro-description">A little inspiration for your next movie night.</p>
+			</div>
+			<div class="intro-note" aria-hidden="true"><span class="intro-note-star">✳</span><span>Curated for<br>the curious</span></div>
+		</section>
+
+		<section class="collection" aria-labelledby="collection-title">
+			<div class="collection-heading">
+				<div><p class="eyebrow section-eyebrow">THE COLLECTION</p><h2 id="collection-title">Explore films</h2></div>
+				<button class="favorites-filter" id="favorites-filter" type="button" aria-pressed="false">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
+					<span>Favorites</span><span class="favorite-count" id="favorite-count" aria-label="0 favorites">0</span>
+				</button>
+			</div>
+
+			<form class="filter-bar" id="filters" role="search" autocomplete="off">
+				<label class="search-field" for="search-input">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+					<input id="search-input" name="title" type="search" placeholder="Search movies..." aria-label="Search movies by title">
+					<kbd aria-hidden="true">⌕</kbd>
+				</label>
+				<label class="select-field" for="genre-filter"><span class="field-label">GENRE</span>
+					<select id="genre-filter" name="genre"><option value="all">All genres</option></select>
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+				</label>
+				<label class="select-field sort-field" for="sort-select"><span class="field-label">SORT BY</span>
+					<select id="sort-select" name="sort"><option value="rating-desc">Top rated</option><option value="rating-asc">Lowest rated</option></select>
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+				</label>
+			</form>
+
+			<div class="results-line" aria-live="polite" aria-atomic="true">
+				<p id="results-count">Showing all films</p><span class="results-rule" aria-hidden="true"></span><p class="results-hint">Good stories, no particular order.</p>
+			</div>
+			<div class="movie-grid" id="movie-grid" aria-label="Movies"></div>
+			<div class="empty-state" id="empty-state" hidden>
+				<span class="empty-icon" aria-hidden="true">◌</span><h3 id="empty-title">No films found</h3>
+				<p id="empty-description">Try adjusting your search or filters.</p><button class="text-button" id="reset-filters" type="button">Clear filters</button>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer"><span>Made for movie people <span aria-hidden="true">✳</span></span><span id="footer-film-count">A shelf of good stories</span></footer>
+
+	<dialog class="details-dialog" id="movie-dialog" aria-labelledby="dialog-title">
+		<div class="dialog-content" id="dialog-content"></div>
+		<button class="dialog-close icon-button" id="dialog-close" type="button" aria-label="Close movie details" title="Close">
+			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12"/></svg>
+		</button>
+	</dialog>
+</body>
+</html>
